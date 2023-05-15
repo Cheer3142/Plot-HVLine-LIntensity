@@ -7,6 +7,12 @@ from astropy.io import fits
 
 path  = Path(r"C:\Users\Optics_Lab_010\Desktop\Project\NanoPiezo\Anjelie img\EvWaCo_Angelie\Mask Pressure Tool Images\Mask_images (copy)")
 fname = ''
+col_lst = ['r', 'm', 'g', 'b', 'c', 'k']
+def gentr_fn(alist):
+    while 1:
+        for j in alist:
+            yield j
+col_ele = gentr_fn(col_lst)
 #exit()
 
 #mask_image[0,:]     # horizontal line   (x)
@@ -23,17 +29,19 @@ def animate(i):
     if fname == files[-1]:
         pass
     else:
-        print(files[-1])
         mask_image = fits.open(path / files[-1])[0].data
         y = mask_image[95,:] 
         x = [index for index in range(len(y))]
         diff = mask_image[95,:].max() - mask_image[95,:].min()
         plt.cla()
 
-        plt.plot(x, y, color = 'g', linestyle = 'dashed',
+        plt.plot(x, y, color = next(col_ele), linestyle = 'dashed',
                            marker = 'o', label= 'Horizontal line({})'.format(diff))
-
-        plt.legend(loc='upper left')
+        plt.title(files[-1].split('\\')[-1])
+        plt.xlabel("pixel")
+        plt.ylabel("light intensity")
+        plt.legend(loc='lower left')
+        #plt.legend()
         plt.tight_layout()
         fname = files[-1]
 
