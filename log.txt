@@ -1,0 +1,5 @@
+{
+    "Path"	: "C:\\Users\\Optics_Lab_010\\Desktop\\Project\\NanoPiezo\\Anjelie img\\EvWaCo_Angelie\\Mask Pressure Tool Images\\Mask_images (copy)",
+    "Hline"	: 85,
+    "Vline"	: 100
+}
