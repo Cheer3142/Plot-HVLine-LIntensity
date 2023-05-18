@@ -50,7 +50,7 @@ js = json.loads(data)
 # Path assign
 path  = Path(js['Path'])
 if js['Path'] == "":
-    os.chdir(os.path.dirname(__file__) + '/../sample')
+    os.chdir(os.path.dirname(__file__) + '/../_sample')
 
 # Initialize variables 
 try:
@@ -60,7 +60,7 @@ except:
     h_select = 100
     v_select = 100
 fname = ''
-
+cmap  = js['cmap']
 # Color Iterate
 col_lst = ['r', 'g', 'b', 'c', 'm', 'k']
 col_ele = gen_iterate(col_lst)
@@ -113,7 +113,7 @@ def animate(i):
             ax[2].set_xlabel("pixel")
             ax[2].set_ylabel("light intensity")
             #ax[2].legend(loc='lower left')
-            ax[1].imshow(mask_image_copy, cmap='gray') # cm.get_cmap('Spectral')
+            ax[1].imshow(mask_image_copy, cmap=cmap) # cm.get_cmap('Spectral')
             ax[1].set_title(files[-1].split('\\')[-1])
             #fig.tight_layout()
             fig.savefig('../_Dump/'+ ''.join(str(i) for i in time.localtime()[:6]) +'.png')
