@@ -54,7 +54,7 @@ def on_zoom(event):
                 if box_y2 < box_y1:
                     box_y1, box_y2 = box_y2, box_y1
             # Print the selected box coordinates
-            print(f'Selected box: ({box_x1}, {box_y1}) - ({box_x2}, {box_y2})')
+            #print(f'Selected box: ({box_x1}, {box_y1}) - ({box_x2}, {box_y2})')
             fname = ''
 
 def on_key(event):
@@ -154,28 +154,17 @@ def animate(i):
                 diffh = int(yh.max() - yh.min())
                 diffv = int(yv.max() - yv.min())
 
-                if xh[-1]*3 > xv[-1]:
-                    ax[0].plot(xh, yh, color=next(col_ele), linestyle='dashed', marker='.', label='Horizontal line')
-                    ax[0].set_title('Horizontal Box (ȳ from {} to {})'.format(box_y1, box_y2))
-                    ax[0].set_xlabel("Pixel Location")
-                    ax[0].set_ylabel("Pixel Value")
+                ax[0].plot(xh, yh, color=next(col_ele), linestyle='dashed', marker='.', label='Horizontal line')
+                ax[0].set_title('Horizontal Box (ȳ from {} to {})'.format(box_y1, box_y2))
+                ax[0].set_xlabel("Pixel Location")
+                ax[0].set_ylabel("Pixel Value")
 
-                    ax[2].hist(mask_image_zoom.flatten(), bins=100, color=next(col_ele))
-                    ax[2].set_title('Histogram')
-                    ax[2].set_xlabel("Pixel Value")
-                    ax[2].set_ylabel("Number of Pixels")
-                    ax[2].set_yscale('log')
-                else:
-                    ax[2].plot(xv, yv, color=next(col_ele), linestyle='dashed', marker='.', label='Horizontal line')
-                    ax[2].set_title('Vertical Box (x̄ from {} to {})'.format(box_x1, box_x2))
-                    ax[2].set_xlabel("Pixel Location")
-                    ax[2].set_ylabel("Pixel Value")
+                ax[2].plot(xv, yv, color=next(col_ele), linestyle='dashed', marker='.', label='Horizontal line')
+                ax[2].set_title('Vertical Box (x̄ from {} to {})'.format(box_x1, box_x2))
+                ax[2].set_xlabel("Pixel Location")
+                ax[2].set_ylabel("Pixel Value")
 
-                    ax[0].hist(mask_image_zoom.flatten(), bins=100, color=next(col_ele))
-                    ax[0].set_title('Histogram')
-                    ax[0].set_xlabel("Pixel Value")
-                    ax[0].set_ylabel("Number of Pixels")
-                    ax[0].set_yscale('log')
+
                 #ax[2].set_box_aspect(1)
                 
                 
